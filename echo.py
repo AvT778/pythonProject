@@ -10,10 +10,42 @@ dp = Dispatcher()
 async def startCommand(msg: Message):
     await msg.answer('Привет! Я эхо-бот.\nНапиши или отправь мне что-нибудь')
 
+@dp.message(F.content_type == ContentType.AUDIO)
+async def audioEcho(msg: Message):
+    print(msg)
+    await msg.reply_audio(msg.audio.file_id)
+
 @dp.message(F.content_type == ContentType.PHOTO)
 async def photoEcho(msg: Message):
     print(msg)
     await msg.reply_photo(msg.photo[0].file_id)
+
+@dp.message(F.content_type == ContentType.VOICE)
+async def voiceEcho(msg: Message):
+    print(msg)
+    await msg.reply_voice(msg.voice.file_id)
+
+@dp.message(F.content_type == ContentType.DOCUMENT)
+async def docEcho(msg: Message):
+    print(msg)
+    await msg.reply_document(msg.document.file_id)
+
+@dp.message(F.content_type == ContentType.STICKER)
+async def stickerEcho(msg: Message):
+    print(msg)
+    await msg.reply_sticker(msg.sticker.file_id)
+
+@dp.message(F.content_type == ContentType.VIDEO)
+async def videoEcho(msg: Message):
+    print(msg)
+    await msg.reply_video(msg.video.file_id)
+
+
+
+@dp.message(F.content_type == ContentType.VOICE)
+async def voiceEcho(msg: Message):
+    print(msg)
+    await msg.reply_voice(msg.voice.file_id)
 
 @dp.message()
 async def echo(msg: Message):
