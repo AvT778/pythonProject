@@ -5,9 +5,9 @@ from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, C
 BOT_TOKEN = '6812909660:AAEq7qTQTbsuDYYZ2vIKxaEallvQV-2m9YE'
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
+
 yaBtn = InlineKeyboardButton(text='Яндекс', callback_data='yaBtn_pressed')
 googleBtn = InlineKeyboardButton(text='Google', callback_data='googleBtn_pressed')
-
 kb = InlineKeyboardMarkup(inline_keyboard=[[yaBtn], [googleBtn]])
 
 @dp.callback_query(F.data.in_(['yaBtn_pressed']))
